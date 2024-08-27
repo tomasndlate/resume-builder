@@ -1,0 +1,185 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: var(--width-md);
+  margin: auto;
+  padding: 15px 0;
+  gap: 15px;
+}
+
+.dashboard-header {
+  position: relative;
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.dashboard-header h1 {
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.dashboard-header_bottom {
+  position: relative;
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  justify-content: space-between;
+  align-items:flex-end;
+  border-bottom: 1px solid var(--color-highlight-secondary);
+}
+
+.dashboard-header_bottom nav {
+  display: flex;
+  gap: 5px;
+}
+
+.dashboard-header_bottom nav a {
+  color: var(--color-text-primary);
+  padding-bottom: 6px;
+}
+
+.dashboard-header_active-link {
+  border-bottom: 2px solid var(--color-highlight-primary);
+  padding-bottom: 4px;
+}
+
+.dashboard-header_bottom button {
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 8px 12px;
+  background-color: var(--color-highlight-primary);
+  color: var(--color-text-contrast);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.dashboard-header_bottom button p {
+  font-size: var(--font-size-md);
+  font-weight: 600;
+}
+
+.dashboard-header_bottom button i {
+  -webkit-text-stroke: 1px;
+  font-weight: var(--font-size-md);
+}
+
+.dashboard-resumes {
+  position: relative;
+  width: 100%;
+  height: fit-content;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+}
+
+@media screen and (max-width: 1150px) {
+  .dashboard-resumes {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+@media screen and (max-width: 850px) {
+  .dashboard-resumes {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media screen and (max-width: 600px) {
+  .dashboard-resumes {
+    grid-template-columns: 1fr;
+  }
+}
+
+.dashboard-resumes_card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  height: fit-content;
+  background-color: var(--color-background-secondary);
+  padding: 15px;
+  border-radius: 6px;
+}
+
+.dashboard-resumes_card > header {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.dashboard-resumes_card > header > h2 {
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+}
+
+.dashboard-resumes_card > header > p {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+.dashboard-resumes_card > article {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.dashboard-resumes_card > article > button {
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  gap: 6px;
+  border: none;
+  cursor: pointer;
+  font-size: var(--font-size-md);
+  background-color: rgba(255, 255, 255, 0);
+}
+
+.dashboard-resumes_card > article > button > i {
+  color: var(--color-text-highlight);
+  -webkit-text-stroke: .6px;
+}
+
+.dashboard-resumes_card > article > button > p {
+  color: var(--color-text-primary);
+}
+
+.dashboard-resumes_card_delete-icon {
+  color: rgba(201, 78, 89, 1);
+}
+
+.dashboard-resumes_card > footer {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+    justify-content: flex-end;
+}
+
+.dashboard-resumes_card > footer > a {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+}
+
+
+.dashboard-resumes_card_edit {
+  background-color: var(--color-highlight-low-opacity);
+  color: var(--color-text-highlight);
+}
+
+.dashboard-resumes_card_edit i {
+  -webkit-text-stroke: .5px;
+}

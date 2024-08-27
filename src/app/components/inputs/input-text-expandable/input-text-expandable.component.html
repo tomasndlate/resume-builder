@@ -1,0 +1,17 @@
+<div class="input-expandable">
+  <input
+    maxlength="35"
+    class="input-expandable_input"
+    type="text"
+    placeholder="Untitled"
+    [(ngModel)]="inputValue"
+    (blur)="onInputBlur()"
+    #inputExpandable
+  >
+  <span class="input-expandable_span"> {{ inputValue }}</span>
+  <div class="input-expandable_focus-effect"></div>
+</div>
+
+
+<i (click)="focusOnInput()" class="bi bi-pencil"></i>
+

@@ -1,0 +1,47 @@
+.resume-component {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.resume-component_header {
+  position: relative;
+  display: flex;
+  width: fit-content;
+}
+
+.resume-component_header_title {
+  font-size: 22px;
+}
+
+.resume-component_article {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.resume-component_footer_button {
+  position: relative;
+  display: flex;
+  gap: 5px;
+  border: none;
+  background-color: rgba(255, 255, 255, 0);
+  cursor: pointer;
+}
+
+.resume-component_footer i,
+.resume-component_footer p {
+  font-size: var(--font-size-lg);
+  color: var(--color-text-highlight);
+}
+
+.resume-component_footer i {
+  -webkit-text-stroke: .7px;
+}
+.resume-component_footer p {
+  font-weight: 500;
+}

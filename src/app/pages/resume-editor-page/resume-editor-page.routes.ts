@@ -7,8 +7,8 @@ export const ResumeEditorPageRoutes: Routes = [
   //   redirectTo: ''
   // },
   {
-    // path: ':id',
-    path: '',
+    path: ':id',
+    // path: '',
     component: ResumeEditorPageComponent
   }
 ]

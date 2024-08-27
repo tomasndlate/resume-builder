@@ -1,0 +1,21 @@
+<div (click)="emitCancelEvent()" class="delete-popup-background"></div>
+
+<section class="delete-popup">
+  <header class="delete-popup_header">
+    <h3>Delete Resume</h3>
+  </header>
+  <article class="delete-popup_article">
+    <p>Are you sure you want to delete <b>{{ resumeTag }}</b>?</p>
+    <div class="delete-popup_article_warning">
+      <span class="delete-popup_article_warning_title">
+        <i class="bi bi-exclamation-triangle-fill"></i>
+        <p>Warning</p>
+      </span>
+      <p class="delete-popup_article_warning_message">By deleting this resume, you won't be able to access it later.</p>
+    </div>
+  </article>
+  <footer class="delete-popup_footer">
+    <button (click)="emitCancelEvent()" class="delete-popup_footer_cancel">Cancel</button>
+    <button (click)="emitDeleteEvent()" class="delete-popup_footer_delete">Yes, delete resume</button>
+  </footer>
+</section>

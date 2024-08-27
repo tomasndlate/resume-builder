@@ -1,1 +1,61 @@
-<p>resume-editor-page works!</p>
+<ng-container *ngIf="resume; else resumeNotFound">
+
+  <section class="editor">
+
+    <header class="editor_header">
+      <a [routerLink]="['/dashboard']" class="editor_header_return-to-resumes">
+        <i class="bi bi-arrow-left"></i>
+        <p>Resumes</p>
+      </a>
+      <div class="editor_header_title-position">
+        <app-input-text-expandable
+        [inputValue]="resume.tag"
+        [inputEmptyDefaultValue]="'Untitled'"
+        (inputValueChange)="updateResumeTag($event)"
+        ></app-input-text-expandable>
+      </div>
+    </header>
+
+    <article class="editor_article">
+
+      <app-resume-personal-details
+      [personalDetails]="resume.personalDetails"
+      (personalDetailsChange)="updateResumePersonalDetails($event)"
+      ></app-resume-personal-details>
+
+      <app-resume-summary></app-resume-summary>
+
+      <app-resume-employment
+      [employment]="resume.employment"
+      (employmentChange)="updateResumeEmployment($event)"
+      ></app-resume-employment>
+
+      <app-resume-education></app-resume-education>
+
+      <app-resume-skills></app-resume-skills>
+
+      <app-resume-websites></app-resume-websites>
+
+      <app-resume-certifications></app-resume-certifications>
+
+      <app-resume-volunteering></app-resume-volunteering>
+
+      <app-resume-custom-section></app-resume-custom-section>
+
+    </article>
+
+    <footer class="editor_footer">
+      Future add buttons
+    </footer>
+
+  </section>
+
+  <section class="viewer">
+    <app-resume-viewer [resume]="resume"></app-resume-viewer>
+  </section>
+
+</ng-container>
+
+<ng-template #resumeNotFound>
+  <p>NOT FOUND</p>
+</ng-template>

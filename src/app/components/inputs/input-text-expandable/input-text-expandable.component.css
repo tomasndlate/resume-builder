@@ -1,0 +1,65 @@
+:host {
+  position: relative;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+i {
+  -webkit-text-stroke: .8px;
+  color: var(--color-highlight-secondary);
+  cursor: pointer;
+  font-size: var(--font-size-lg);
+}
+
+.input-expandable {
+  position: relative;
+  width: fit-content;
+  height: fit-content;
+  display: inline-block;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.input-expandable_input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0);
+  border: none;
+}
+
+.input-expandable_span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 100px;
+  min-height: 40px;
+  visibility: hidden;
+}
+
+.input-expandable_input,
+.input-expandable_span {
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.input-expandable_focus-effect {
+  position: absolute;
+  display: none;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  width: 100%;
+  background-color: var(--color-highlight-secondary);
+}
+
+.input-expandable_input:focus {
+  outline: none;
+}
+.input-expandable_input:focus ~ .input-expandable_focus-effect {
+  display: block;
+}
