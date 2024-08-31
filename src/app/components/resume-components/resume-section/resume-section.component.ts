@@ -1,11 +1,11 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { IResumeSection, IResumeSectionElement } from 'src/app/models/IResume.interface';
-import { createSectionElement_Education, createSectionElement_Employments } from 'src/app/models/Resume.implement';
+import { createSectionElement_Certifications, createSectionElement_Education, createSectionElement_Employments, createSectionElement_Skills, createSectionElement_Volunteering, createSectionElement_Websites } from 'src/app/models/Resume.implement';
 
 @Component({
   selector: 'app-resume-section',
   templateUrl: './resume-section.component.html',
-  styleUrls: ['./resume-section.component.css', '../resume-components/resume-components.css']
+  styleUrls: ['../resume-section.css']
 })
 export class ResumeSectionComponent {
   @Input() section!: IResumeSection;
@@ -17,20 +17,30 @@ export class ResumeSectionComponent {
   indexToDelete: number = -1;
 
   addNewElement_ToSection() {
-    let newSectionElement: IResumeSectionElement = this.newSectionElement();
-    this.section.elements.push(newSectionElement);
-    this.indexElementOpen = this.section.elements.length - 1;
-    this.emitSectionChange();
+    let newSectionElement: IResumeSectionElement | null = this.newSectionElement();
+    if (newSectionElement) {
+      this.section.elements.push(newSectionElement);
+      this.indexElementOpen = this.section.elements.length - 1;
+      this.emitSectionChange();
+    }
   }
 
-  private newSectionElement(): IResumeSectionElement {
+  private newSectionElement(): IResumeSectionElement | null {
     switch(this.section.sectionType) {
-      case "employment":
+      case 'employment':
         return createSectionElement_Employments();
-      case "education":
+      case 'education':
         return createSectionElement_Education();
+      case 'skills':
+        return createSectionElement_Skills();
+      case 'websites':
+        return createSectionElement_Websites();
+      case 'certifications':
+        return createSectionElement_Certifications();
+      case 'volunteering':
+        return createSectionElement_Volunteering();
       default:
-        return createSectionElement_Employments();
+        return null;
     }
   }
 

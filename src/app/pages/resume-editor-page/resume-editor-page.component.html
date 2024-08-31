@@ -18,40 +18,59 @@
 
     <article class="editor_article">
 
+      <!-- personal details -->
       <app-resume-personal-details
       [personalDetails]="resume.personalDetails"
       (personalDetailsChange)="updateResumePersonalDetails($event)"
       ></app-resume-personal-details>
 
+      <!-- summary -->
       <app-resume-summary></app-resume-summary>
 
+      <!-- employment -->
       <app-resume-section
       [section]="resume.employment"
-      (sectionChange)="updateResumeEmployment($event)"
+      (sectionChange)="updateResumeSection($event)"
       ></app-resume-section>
 
+      <!-- education -->
       <app-resume-section
       [section]="resume.education"
-      (sectionChange)="updateResumeEducation($event)"
+      (sectionChange)="updateResumeSection($event)"
       ></app-resume-section>
 
-      <app-resume-education></app-resume-education>
+      <!-- skills -->
+      <app-resume-section
+      [section]="resume.skills"
+      (sectionChange)="updateResumeSection($event)"
+      ></app-resume-section>
 
-      <app-resume-skills></app-resume-skills>
+      <!-- websites -->
+      <app-resume-section
+      [section]="resume.websites"
+      (sectionChange)="updateResumeSection($event)"
+      ></app-resume-section>
 
-      <app-resume-websites></app-resume-websites>
+      <!-- certifications -->
+      <app-resume-section
+      [section]="resume.certifications"
+      (sectionChange)="updateResumeSection($event)"
+      ></app-resume-section>
 
-      <app-resume-certifications></app-resume-certifications>
+      <!-- volunteering -->
+      <app-resume-section
+      [section]="resume.volunteering"
+      (sectionChange)="updateResumeSection($event)"
+      ></app-resume-section>
 
-      <app-resume-volunteering></app-resume-volunteering>
-
-      <app-resume-custom-section></app-resume-custom-section>
+      <!-- TO-DO: Custome Sections -->
 
     </article>
 
-    <footer class="editor_footer">
+    <!-- TO-DO: Future buttons to add Sections -->
+    <!-- <footer class="editor_footer">
       Future add buttons
-    </footer>
+    </footer> -->
 
   </section>
 

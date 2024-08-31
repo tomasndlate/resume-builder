@@ -1,12 +1,14 @@
 <div class="resume-component-element">
 
   <header class="resume-component-element_header" (click)="flipIsElementOpen()">
-    <h3 class="resume-component-element_header_title">
-      {{ sectionElementTitle }}
-    </h3>
-    <h6 *ngIf="sectionElementSubtitle">
-      {{ sectionElementSubtitle }}
-    </h6>
+    <div class="resume-component-element_header_heading">
+      <h3 class="resume-component-element_header_heading_title">
+        {{ sectionElementTitle }}
+      </h3>
+      <h6 *ngIf="sectionElementSubtitle" class="resume-component-element_header_heading_subtitle">
+        {{ sectionElementSubtitle }}
+      </h6>
+    </div>
 
     <i *ngIf="!isElementOpen" class="bi bi-chevron-expand resume-component-element_header_icon"></i>
     <i *ngIf="isElementOpen" class="bi bi-chevron-contract resume-component-element_header_icon"></i>
@@ -28,8 +30,8 @@
       <!-- Textarea input field -->
       <ng-container *ngIf="sectionElement.elementFields[fieldKey].type == 'textarea'">
         <div class="resume-component-element_input-section grid-2-columns">
-          <label class="resume-component-element_input-section_label" for="description">{{ sectionElement.elementFields[fieldKey].label }}</label>
-          <textarea class="resume-component-element_input-section_textarea" id="description" type="text"
+          <label class="resume-component-element_input-section_label" [for]="fieldKey">{{ sectionElement.elementFields[fieldKey].label }}</label>
+          <textarea class="resume-component-element_input-section_textarea" [id]="fieldKey" type="text"
             placeholder="" (blur)="onInputBlur()" [(ngModel)]="sectionElement.elementFields[fieldKey].value"></textarea>
         </div>
       </ng-container>
@@ -41,7 +43,7 @@
   <footer *ngIf="isElementOpen" class="resume-component-element_footer">
     <button (click)="deleteSectionElement()" class="resume-component-element_footer_delete">
       <i class="bi bi-exclamation-triangle-fill"></i>
-      <p>Remove !WHAT! </p>
+      <p>Remove item</p>
     </button>
   </footer>
 

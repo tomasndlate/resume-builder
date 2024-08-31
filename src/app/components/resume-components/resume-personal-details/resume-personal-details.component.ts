@@ -5,7 +5,7 @@ import { createIPersonalDetails } from 'src/app/models/Resume.implement';
 @Component({
   selector: 'app-resume-personal-details',
   templateUrl: './resume-personal-details.component.html',
-  styleUrls: ['./resume-personal-details.component.css', '../resume-components.css', '../resume-components-element.css']
+  styleUrls: ['../resume-section.css', '../resume-section-element.css']
 })
 export class ResumePersonalDetailsComponent {
 

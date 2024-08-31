@@ -14,11 +14,24 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   cursor: pointer;
 }
 
-.resume-component-element_header_title {
+.resume-component-element_header_heading {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.resume-component-element_header_heading_title {
   font-size: var(--font-size-md);
+}
+
+.resume-component-element_header_heading_subtitle {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  font-weight: 400;
 }
 
 .resume-component-element_header_icon {

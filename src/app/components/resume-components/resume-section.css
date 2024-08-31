@@ -35,7 +35,7 @@
 
 .resume-component_footer i,
 .resume-component_footer p {
-  font-size: var(--font-size-lg);
+  font-size: var(--font-size-md);
   color: var(--color-text-highlight);
 }
 

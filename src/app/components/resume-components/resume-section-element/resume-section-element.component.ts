@@ -4,7 +4,7 @@ import { IResume, IResumeSectionElement } from 'src/app/models/IResume.interface
 @Component({
   selector: 'app-resume-section-element',
   templateUrl: './resume-section-element.component.html',
-  styleUrls: ['./resume-section-element.component.css', '../resume-components/resume-components-element.css']
+  styleUrls: ['../resume-section-element.css']
 })
 export class ResumeSectionElementComponent {
   @Input() sectionElement!: IResumeSectionElement;

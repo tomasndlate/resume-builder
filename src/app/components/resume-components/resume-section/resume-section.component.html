@@ -1,0 +1,39 @@
+<div class="resume-component">
+
+  <header class="resume-component_header">
+    <h2 class="resume-component_header_title">{{ section.title.default }}</h2>
+  </header>
+
+  <ng-container *ngIf="section.elements.length > 0">
+    <article class="resume-component_article">
+
+      <ng-container  *ngFor="let element of section.elements; let i = index">
+        <app-resume-section-element
+          [sectionElement]="section.elements[i]"
+          (sectionElementChange)="updateSectionElement(i, $event)"
+          (sectionElementDeleted)="deleteSectionElement(i)"
+          [isElementOpen]="i === indexElementOpen"
+          (elementOpenAction)="updateIndexElementOpen(i)"
+        ></app-resume-section-element>
+      </ng-container>
+
+    </article>
+  </ng-container>
+
+  <footer class="resume-component_footer">
+    <button (click)="addNewElement_ToSection()" class="resume-component_footer_button">
+      <i class="bi bi-plus-lg"></i>
+      <p>Add {{ section.title.default }}</p>
+    </button>
+  </footer>
+</div>
+
+<!-- DELETE EMPLOYMENTS ELEMENT POPUP -->
+<app-delete-popup
+  *ngIf="isDeletePopupOpen"
+  [elementTypeName]="section.title.default + ' Entry'"
+  [elementName]="section.title.default + ' Entry'"
+  (cancelEvent)="cancelElementDelete()"
+  (deleteEvent)="confirmElementDelete()"
+></app-delete-popup>
+

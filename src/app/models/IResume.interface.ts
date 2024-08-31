@@ -8,11 +8,11 @@ export interface IResumeDraft {
   summary: ISummary,
   employment: IResumeSection,
   education: IResumeSection,
-  skills: ISkills,
-  websites: IWebsites,
-  certifications: ICertfications,
-  volunteering: IVolunteerings,
-  customSection: ICustomSections
+  skills: IResumeSection,
+  websites: IResumeSection,
+  certifications: IResumeSection,
+  volunteering: IResumeSection,
+  // customSection: ICustomSections
 }
 
 export interface IPersonalDetails {

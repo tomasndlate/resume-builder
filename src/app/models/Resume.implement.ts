@@ -29,11 +29,11 @@ export const createIResumeDraft = (tag: string): IResumeDraft => {
     summary: createISummary(),
     employment: createSection_Employments(),
     education: createSection_Education(),
-    skills: createISkills(),
-    websites: createIWebsites(),
-    certifications: createICertfications(),
-    volunteering: createIVolunteerings(),
-    customSection: createICustomSections()
+    skills: createSection_Skills(),
+    websites: createSection_Websites(),
+    certifications: createSection_Certifications(),
+    volunteering: createSection_Volunteering(),
+    // customSection: createICustomSections()
   }
   return resumeDraft;
 }
@@ -89,6 +89,7 @@ export const createSectionElement_Employments = (): IResumeSectionElement => {
   return sectionElement;
 }
 
+
 export const createSection_Education = (): IResumeSection => {
   const section: IResumeSection = {
     sectionType: "education",
@@ -116,53 +117,106 @@ export const createSectionElement_Education = (): IResumeSectionElement => {
 }
 
 
-export const createIEducations = (): IEducations => {
-  const educations: IEducations = {
-    title: { value: "", default: "" },
-    elements: []
+export const createSection_Skills = (): IResumeSection => {
+  const section: IResumeSection = {
+    sectionType: "skills",
+    title: { value: "", default: "Skills" },
+    elements: [],
   }
-  return educations;
+  return section
+}
+export const createSectionElement_Skills = (): IResumeSectionElement => {
+  const sectionElement: IResumeSectionElement = {
+    elementTitleKeys: ["skillName"],
+    elementTitleConnector: "",
+    elementSubTitleKeys: [],
+    elementSubTitleConnector: "",
+    elementFields: {
+      skillName: {type: 'text', value: "", label: "Skill" },
+    }
+
+  }
+  return sectionElement;
 }
 
-export const createISkills = (): ISkills => {
-  const skills: ISkills = {
-    title: { value: "", default: "" },
-    elements: []
+
+export const createSection_Websites = (): IResumeSection => {
+  const section: IResumeSection = {
+    sectionType: "websites",
+    title: { value: "", default: "Websites" },
+    elements: [],
   }
-  return skills;
+  return section
+}
+export const createSectionElement_Websites = (): IResumeSectionElement => {
+  const sectionElement: IResumeSectionElement = {
+    elementTitleKeys: ["linkLabel"],
+    elementTitleConnector: "",
+    elementSubTitleKeys: [],
+    elementSubTitleConnector: "",
+    elementFields: {
+      linkLabel: {type: 'text', value: "", label: "Label" },
+      link: {type: 'text', value: "", label: "Link" },
+    }
+
+  }
+  return sectionElement;
 }
 
-export const createIWebsites = (): IWebsites => {
-  const websites: IWebsites = {
-    title: { value: "", default: "" },
-    elements: []
+export const createSection_Certifications = (): IResumeSection => {
+  const section: IResumeSection = {
+    sectionType: "certifications",
+    title: { value: "", default: "Certifications" },
+    elements: [],
   }
-  return websites;
+  return section
+}
+export const createSectionElement_Certifications = (): IResumeSectionElement => {
+  const sectionElement: IResumeSectionElement = {
+    elementTitleKeys: ["certification"],
+    elementTitleConnector: "",
+    elementSubTitleKeys: [],
+    elementSubTitleConnector: "",
+    elementFields: {
+      certification: {type: 'text', value: "", label: "Certification" },
+      institution: {type: 'text', value: "", label: "Institution" },
+    }
+
+  }
+  return sectionElement;
 }
 
-export const createICertfications = (): ICertfications => {
-  const certifications: ICertfications = {
-    title: { value: "", default: "" },
-    elements: []
+
+export const createSection_Volunteering = (): IResumeSection => {
+  const section: IResumeSection = {
+    sectionType: "volunteering",
+    title: { value: "", default: "Voluntering" },
+    elements: [],
   }
-  return certifications;
+  return section
+}
+export const createSectionElement_Volunteering = (): IResumeSectionElement => {
+  const sectionElement: IResumeSectionElement = {
+    elementTitleKeys: ["activity"],
+    elementTitleConnector: "",
+    elementSubTitleKeys: [],
+    elementSubTitleConnector: "",
+    elementFields: {
+      activity: {type: 'text', value: "", label: "Activity name, job title, etc." },
+      location: {type: 'text', value: "", label: "Location" },
+    }
+
+  }
+  return sectionElement;
 }
 
-export const createIVolunteerings = (): IVolunteerings => {
-  const volunteerings: IVolunteerings = {
-    title: { value: "", default: "" },
-    elements: []
-  }
-  return volunteerings;
-}
-
-export const createICustomSections = (): ICustomSections => {
-  const customSections: ICustomSections = {
-    title: { value: "", default: "" },
-    elements: []
-  }
-  return customSections;
-}
+// export const createICustomSections = (): ICustomSections => {
+//   const customSections: ICustomSections = {
+//     title: { value: "", default: "" },
+//     elements: []
+//   }
+//   return customSections;
+// }
 
 
 
