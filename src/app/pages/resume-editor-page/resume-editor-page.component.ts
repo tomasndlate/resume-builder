@@ -1,6 +1,6 @@
-import { ChangeDetectorRef, Component } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Resume } from '../../models/Resume.model';
+import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { IEmploymentsElement, IResume, IResumeSection } from '../../models/IResume.interface';
 import { ResumeService } from '../../services/resume.service';
 
 @Component({
@@ -10,7 +10,7 @@ import { ResumeService } from '../../services/resume.service';
 })
 export class ResumeEditorPageComponent {
 
-  resume!: Resume;
+  resume!: IResume;
 
   test_input: string = 'Untitled';
 
@@ -40,6 +40,32 @@ export class ResumeEditorPageComponent {
   updateResumeEmployment(employment: string) {
     this.resume = {...this.resume, employment: JSON.parse(employment)};
     this.updateResume();
+  }
+
+  updateResumeSection(sectionString: string) {
+    const section: IResumeSection = JSON.parse(sectionString);
+    this.resume = this.getUpdatedResumeWithSection(section);
+    this.updateResume();
+  }
+
+  private getUpdatedResumeWithSection(section: IResumeSection) {
+    const sectionKey: keyof IResume = section.sectionType
+    switch (sectionKey) {
+      case 'employment':
+        return {...this.resume, employment: section};
+      case 'education':
+        return {...this.resume, education: section};
+      case 'skills':
+        return {...this.resume, skills: section};
+      case 'websites':
+        return {...this.resume, websites: section};
+      case 'certifications':
+        return {...this.resume, certifications: section};
+      case 'volunteering':
+        return {...this.resume, volunteering: section};
+      default:
+        return this.resume;
+    }
   }
 
   private updateResume() {

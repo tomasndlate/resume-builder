@@ -1,0 +1,50 @@
+<div class="resume-component-element">
+
+  <header class="resume-component-element_header" (click)="flipIsElementOpen()">
+    <div class="resume-component-element_header_heading">
+      <h3 class="resume-component-element_header_heading_title">
+        {{ sectionElementTitle }}
+      </h3>
+      <h6 *ngIf="sectionElementSubtitle" class="resume-component-element_header_heading_subtitle">
+        {{ sectionElementSubtitle }}
+      </h6>
+    </div>
+
+    <i *ngIf="!isElementOpen" class="bi bi-chevron-expand resume-component-element_header_icon"></i>
+    <i *ngIf="isElementOpen" class="bi bi-chevron-contract resume-component-element_header_icon"></i>
+  </header>
+
+  <article *ngIf="isElementOpen" class="resume-component-element_article">
+
+    <ng-container *ngFor="let fieldKey of sectionElementFieldsKeys">
+
+      <!-- Text input field -->
+      <ng-container *ngIf="sectionElement.elementFields[fieldKey].type == 'text'">
+        <div class="resume-component-element_input-section">
+          <label class="resume-component-element_input-section_label" [for]="fieldKey">{{ sectionElement.elementFields[fieldKey].label }}</label>
+          <input class="resume-component-element_input-section_input" [id]="fieldKey" type="text"
+            placeholder="" (blur)="onInputBlur()" [(ngModel)]="sectionElement.elementFields[fieldKey].value">
+        </div>
+      </ng-container>
+
+      <!-- Textarea input field -->
+      <ng-container *ngIf="sectionElement.elementFields[fieldKey].type == 'textarea'">
+        <div class="resume-component-element_input-section grid-2-columns">
+          <label class="resume-component-element_input-section_label" [for]="fieldKey">{{ sectionElement.elementFields[fieldKey].label }}</label>
+          <textarea class="resume-component-element_input-section_textarea" [id]="fieldKey" type="text"
+            placeholder="" (blur)="onInputBlur()" [(ngModel)]="sectionElement.elementFields[fieldKey].value"></textarea>
+        </div>
+      </ng-container>
+
+    </ng-container>
+
+  </article>
+
+  <footer *ngIf="isElementOpen" class="resume-component-element_footer">
+    <button (click)="deleteSectionElement()" class="resume-component-element_footer_delete">
+      <i class="bi bi-exclamation-triangle-fill"></i>
+      <p>Remove item</p>
+    </button>
+  </footer>
+
+</div>

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { Resume, ResumeDraft } from 'src/app/models/Resume.model';
+import { IResume, IResumeDraft } from 'src/app/models/IResume.interface';
+import { createIResumeDraft } from 'src/app/models/Resume.implement';
 import { ResumeService } from 'src/app/services/resume.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { ResumeService } from 'src/app/services/resume.service';
 })
 export class ResumeDashboardPageComponent {
 
-  resumes: Resume[] = [];
+  resumes: IResume[] = [];
   isDeletePopupOpen: boolean = false;
   indexResumeToDelete!: number;
 
@@ -29,26 +30,7 @@ export class ResumeDashboardPageComponent {
   }
 
   addResume() {
-    const newResume: ResumeDraft = {
-      tag: 'tomascv',
-      personalDetails: { title: '', element: {
-        jobTitle: '',
-        firstName: '',
-        lastName: '',
-        email: '',
-        phone: '',
-        country: '',
-        city: ''
-      } },
-      summary: { title: '', element: '' },
-      employment: { title: '', elements: [] },
-      education: { title: '', elements: [] },
-      skills: { title: '', elements: [] },
-      websites: { title: '', elements: [] },
-      certifications: { title: '', elements: [] },
-      volunteering: { title: '', elements: [] },
-      customSection: { title: '', elements: [] }
-    }
+    const newResume: IResumeDraft = createIResumeDraft('tomasNEW')
     this.resumeService.addResume(newResume);
   }
 
