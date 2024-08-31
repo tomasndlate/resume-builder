@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Employment } from '../../../../models/Resume.model';
+import { IEmployments, IEmploymentsElement, IResumeSectionElement } from '../../../../models/IResume.interface';
+import { createSectionElement_Employments } from 'src/app/models/Resume.implement';
 
 @Component({
   selector: 'app-resume-employment-element',
@@ -7,18 +8,16 @@ import { Employment } from '../../../../models/Resume.model';
   styleUrls: ['./resume-employment-element.component.css', '../../resume-components-element.css']
 })
 export class ResumeEmploymentElementComponent {
-  @Input() employmentElement: Employment = {
-    jobTitle: '',
-    employer: '',
-    country: '',
-    city: '',
-    description: ''
-  }
+  @Input() employmentElement: IResumeSectionElement = createSectionElement_Employments();
   @Output() employmentElementChange = new EventEmitter<string>();
+  @Output() employmentElementDeleted = new EventEmitter<string>();
 
   @Input() isElementOpen: boolean = false;
   @Output() elementOpenAction = new EventEmitter<string>();
-  // @Input() elementIndex: number = -1;
+
+  deleteEmploymentsElement() {
+    this.employmentElementDeleted.emit();
+  }
 
   flipIsElementOpen() {
     this.isElementOpen = !this.isElementOpen;

@@ -6,7 +6,8 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   styleUrls: ['./delete-popup.component.css']
 })
 export class DeletePopupComponent {
-  @Input() resumeTag: string = '';
+  @Input() elementTypeName: string = 'resume'
+  @Input() elementName: string = '';
   @Output() deleteEvent = new EventEmitter<boolean>();
   @Output() cancelEvent = new EventEmitter<boolean>();
 

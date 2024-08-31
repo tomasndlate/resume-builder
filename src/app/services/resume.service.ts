@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Resume, ResumeDraft } from '../models/Resume.model';
+import { IResume, IResumeDraft } from '../models/IResume.interface';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
@@ -7,16 +7,16 @@ import { BehaviorSubject, Observable } from 'rxjs';
 })
 export class ResumeService {
 
-  private currentResumes: {[id: string]: Resume} = {};
-  private resumeSubject = new BehaviorSubject<Resume[]>([]);
-  resumes$: Observable<Resume[]> = this.resumeSubject.asObservable();
+  private currentResumes: {[id: string]: IResume} = {};
+  private resumeSubject = new BehaviorSubject<IResume[]>([]);
+  resumes$: Observable<IResume[]> = this.resumeSubject.asObservable();
 
   constructor() {
     this.currentResumes = JSON.parse(localStorage.getItem('storedResumes') || '{}');
     this.updateResumeSubject();
   }
 
-  addResume(resume: ResumeDraft): void {
+  addResume(resume: IResumeDraft): void {
     const resumeId = this.generateId();
     this.currentResumes[resumeId] = {
       ...resume,
@@ -30,7 +30,7 @@ export class ResumeService {
     this.updateResumeSubject();
   }
 
-  updateResume(resume: Resume): void {
+  updateResume(resume: IResume): void {
     this.currentResumes[resume.id] = resume;
     this.updateResumeSubject();
   }
@@ -40,7 +40,7 @@ export class ResumeService {
     this.updateResumeSubject();
   }
 
-  getResume_ById(id: number): Resume | null {
+  getResume_ById(id: number): IResume | null {
     return this.currentResumes[id] ? this.currentResumes[id] : null;
   }
 

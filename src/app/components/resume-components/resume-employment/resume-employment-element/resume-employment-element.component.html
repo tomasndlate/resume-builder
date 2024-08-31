@@ -1,11 +1,11 @@
-<div class="resume-component-element">
+<!-- <div class="resume-component-element">
 
   <header class="resume-component-element_header" (click)="flipIsElementOpen()">
     <h3 class="resume-component-element_header_title">
-      <ng-container *ngIf="employmentElement.jobTitle || employmentElement.employer; else elseElementHeader">
-        {{employmentElement.jobTitle}}
-        <ng-container *ngIf="employmentElement.jobTitle && employmentElement.employer">at</ng-container>
-        {{employmentElement.employer}}
+      <ng-container *ngIf="employmentElement.jobTitle.value || employmentElement.employer.value; else elseElementHeader">
+        {{employmentElement.jobTitle.value}}
+        <ng-container *ngIf="employmentElement.jobTitle.value && employmentElement.employer.value">at</ng-container>
+        {{employmentElement.employer.value}}
       </ng-container>
       <ng-template #elseElementHeader>
         (Not Specified)
@@ -18,27 +18,33 @@
   <article *ngIf="isElementOpen" class="resume-component-element_article">
 
     <div class="resume-component-element_input-section">
-      <label class="resume-component-element_input-section_label" for="jobTitle">Job title</label>
-      <input class="resume-component-element_input-section_input" id="jobTitle" type="text" placeholder="The role you want" (blur)="onInputBlur()" [(ngModel)]="employmentElement.jobTitle">
+      <label class="resume-component-element_input-section_label" for="jobTitle">{{ employmentElement.jobTitle.label }}</label>
+      <input class="resume-component-element_input-section_input" id="jobTitle" type="text" placeholder="The role you want" (blur)="onInputBlur()" [(ngModel)]="employmentElement.jobTitle.value">
     </div>
     <div class="resume-component-element_input-section">
-      <label class="resume-component-element_input-section_label" for="employer">Employer</label>
-      <input class="resume-component-element_input-section_input" id="employer" type="text" placeholder="" (blur)="onInputBlur()" [(ngModel)]="employmentElement.employer">
+      <label class="resume-component-element_input-section_label" for="employer">{{ employmentElement.employer.label }}</label>
+      <input class="resume-component-element_input-section_input" id="employer" type="text" placeholder="" (blur)="onInputBlur()" [(ngModel)]="employmentElement.employer.value">
     </div>
     <div class="resume-component-element_input-section">
-      <label class="resume-component-element_input-section_label" for="country">Country</label>
-      <input class="resume-component-element_input-section_input" id="country" type="text" placeholder="" (blur)="onInputBlur()" [(ngModel)]="employmentElement.country">
+      <label class="resume-component-element_input-section_label" for="country">{{ employmentElement.country.label }}</label>
+      <input class="resume-component-element_input-section_input" id="country" type="text" placeholder="" (blur)="onInputBlur()" [(ngModel)]="employmentElement.country.value">
     </div>
     <div class="resume-component-element_input-section">
-      <label class="resume-component-element_input-section_label" for="city">City</label>
-      <input class="resume-component-element_input-section_input" id="city" type="text" placeholder=""(blur)="onInputBlur()" [(ngModel)]="employmentElement.city">
+      <label class="resume-component-element_input-section_label" for="city">{{ employmentElement.city.label }}</label>
+      <input class="resume-component-element_input-section_input" id="city" type="text" placeholder=""(blur)="onInputBlur()" [(ngModel)]="employmentElement.city.value">
     </div>
     <div class="resume-component-element_input-section grid-2-columns">
-      <label class="resume-component-element_input-section_label" for="description">Description</label>
-      <textarea class="resume-component-element_input-section_textarea" id="description" type="text" placeholder="" (blur)="onInputBlur()" [(ngModel)]="employmentElement.description"></textarea>
+      <label class="resume-component-element_input-section_label" for="description">{{ employmentElement.description.label }}</label>
+      <textarea class="resume-component-element_input-section_textarea" id="description" type="text" placeholder="" (blur)="onInputBlur()" [(ngModel)]="employmentElement.description.value"></textarea>
     </div>
-
 
   </article>
 
-</div>
+  <footer *ngIf="isElementOpen" class="resume-component-element_footer">
+    <button (click)="deleteEmploymentsElement()" class="resume-component-element_footer_delete">
+      <i class="bi bi-exclamation-triangle-fill"></i>
+      <p>Remove work experience</p>
+    </button>
+  </footer>
+
+</div> -->

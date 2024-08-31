@@ -4,13 +4,23 @@
   </header>
   <article class="resume-component_article">
 
-    <ng-container *ngFor="let element of employment.elements; let i = index">
+    <!-- <ng-container *ngFor="let element of employment.elements; let i = index">
       <app-resume-employment-element
       [employmentElement]="employment.elements[i]"
       (employmentElementChange)="updateEmploymentElement(i, $event)"
+      (employmentElementDeleted)="deleteEmploymentsElement(i)"
       [isElementOpen]="i === indexElementOpen"
       (elementOpenAction)="updateIndexElementOpen(i)"
       ></app-resume-employment-element>
+    </ng-container> -->
+    <ng-container *ngFor="let element of employment.elements; let i = index">
+      <app-resume-components-element
+      [componentElement]="employment.elements[i]"
+      (componentElementChange)="updateEmploymentElement(i, $event)"
+      (componentElementDeleted)="deleteEmploymentsElement(i)"
+      [isElementOpen]="i === indexElementOpen"
+      (elementOpenAction)="updateIndexElementOpen(i)"
+      ></app-resume-components-element>
     </ng-container>
 
   </article>
@@ -21,3 +31,12 @@
     </button>
   </footer>
 </div>
+
+<!-- DELETE EMPLOYMENTS ELEMENT POPUP -->
+<app-delete-popup
+  *ngIf="isDeletePopupOpen"
+  [elementTypeName]="'work experience'"
+  [elementName]="'Work Experience'"
+  (cancelEvent)="cancelElementDelete()"
+  (deleteEvent)="confirmElementDelete()"
+></app-delete-popup>

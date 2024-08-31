@@ -25,10 +25,15 @@
 
       <app-resume-summary></app-resume-summary>
 
-      <app-resume-employment
-      [employment]="resume.employment"
-      (employmentChange)="updateResumeEmployment($event)"
-      ></app-resume-employment>
+      <app-resume-section
+      [section]="resume.employment"
+      (sectionChange)="updateResumeEmployment($event)"
+      ></app-resume-section>
+
+      <app-resume-section
+      [section]="resume.education"
+      (sectionChange)="updateResumeEducation($event)"
+      ></app-resume-section>
 
       <app-resume-education></app-resume-education>
 

@@ -19,6 +19,9 @@ import { ResumeSkillsElementComponent } from './resume-components/resume-skills/
 import { ResumeEducationElementComponent } from './resume-components/resume-education/resume-education-element/resume-education-element.component';
 import { InputTextExpandableComponent } from './inputs/input-text-expandable/input-text-expandable.component';
 import { FormsModule } from '@angular/forms';
+import { ResumeComponentsElementComponent } from './resume-components/resume-components-element/resume-components-element.component';
+import { ResumeSectionComponent } from './resume-section/resume-section.component';
+import { ResumeSectionElementComponent } from './resume-section-element/resume-section-element.component';
 
 
 
@@ -42,6 +45,9 @@ import { FormsModule } from '@angular/forms';
     ResumeCustomSectionComponent,
     ResumeCustomSectionElementComponent,
     InputTextExpandableComponent,
+    ResumeComponentsElementComponent,
+    ResumeSectionComponent,
+    ResumeSectionElementComponent,
   ],
   imports: [
     CommonModule,
@@ -59,6 +65,8 @@ import { FormsModule } from '@angular/forms';
     ResumeVolunteeringComponent,
     ResumeCustomSectionComponent,
     InputTextExpandableComponent,
+    ResumeSectionComponent,
+    ResumeSectionElementComponent,
   ]
 })
 export class ComponentsModule { }

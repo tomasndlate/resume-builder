@@ -1,5 +1,5 @@
 import { Component, ElementRef, Input, SimpleChanges, ViewChild } from '@angular/core';
-import { Resume } from 'src/app/models/Resume.model';
+import { IResume } from 'src/app/models/IResume.interface';
 
 import * as pdfMake from "pdfmake/build/pdfmake";
 import * as pdfFonts from "pdfmake/build/vfs_fonts";
@@ -15,7 +15,7 @@ pdfjsLib.GlobalWorkerOptions.workerSrc = `https://cdn.jsdelivr.net/npm/pdfjs-dis
   styleUrls: ['./resume-viewer.component.css']
 })
 export class ResumeViewerComponent {
-  @Input() resume!: Resume;
+  @Input() resume!: IResume;
   @ViewChild('pdfCanvas', { static: false }) pdfCanvas!: ElementRef<HTMLCanvasElement>;
   private pdf: pdfjsLib.PDFDocumentProxy | null = null;
   private page: pdfjsLib.PDFPageProxy | null = null;

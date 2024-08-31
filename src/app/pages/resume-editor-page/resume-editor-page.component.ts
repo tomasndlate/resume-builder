@@ -1,6 +1,6 @@
-import { ChangeDetectorRef, Component } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Resume } from '../../models/Resume.model';
+import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { IEmploymentsElement, IResume } from '../../models/IResume.interface';
 import { ResumeService } from '../../services/resume.service';
 
 @Component({
@@ -10,7 +10,7 @@ import { ResumeService } from '../../services/resume.service';
 })
 export class ResumeEditorPageComponent {
 
-  resume!: Resume;
+  resume!: IResume;
 
   test_input: string = 'Untitled';
 
@@ -39,6 +39,11 @@ export class ResumeEditorPageComponent {
 
   updateResumeEmployment(employment: string) {
     this.resume = {...this.resume, employment: JSON.parse(employment)};
+    this.updateResume();
+  }
+
+  updateResumeEducation(education: string) {
+    this.resume = {...this.resume, education: JSON.parse(education)};
     this.updateResume();
   }
 

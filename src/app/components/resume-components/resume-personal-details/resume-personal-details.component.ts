@@ -1,5 +1,6 @@
 import { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
-import { PersonalDetails } from '../../../models/Resume.model';
+import { IPersonalDetails } from '../../../models/IResume.interface';
+import { createIPersonalDetails } from 'src/app/models/Resume.implement';
 
 @Component({
   selector: 'app-resume-personal-details',
@@ -8,26 +9,11 @@ import { PersonalDetails } from '../../../models/Resume.model';
 })
 export class ResumePersonalDetailsComponent {
 
-  @Input() personalDetails: {title: string; element: PersonalDetails} = {
-    title: '',
-    element: {
-      jobTitle: '',
-      firstName: '',
-      lastName: '',
-      email: '',
-      phone: '',
-      country: '',
-      city: ''
-    }
-  };
+  @Input() personalDetails: IPersonalDetails = createIPersonalDetails();
   @Output() personalDetailsChange = new EventEmitter<string>();
 
-  ngOnInit() {
-    console.log(this.personalDetails)
-  }
-
   onTitleChange(newTitle: string) {
-    this.personalDetails.title = newTitle;
+    this.personalDetails.title.value = newTitle;
     this.emitPersonalDetailsChange();
   }
 

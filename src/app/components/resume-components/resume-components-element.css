@@ -88,6 +88,28 @@
   height: 250px;
 }
 
+.resume-component-element_footer {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.resume-component-element_footer_delete {
+  position: relative;
+  display: flex;
+  gap: 5px;
+  border: none;
+  background-color: rgba(255, 255, 255, 0);
+  cursor: pointer;
+}
+
+.resume-component-element_footer_delete i,
+.resume-component-element_footer_delete p {
+  font-size: var(--font-size-lg);
+  color: rgba(180, 93, 67, 1);
+}
+
 @media screen and (max-width: 850px) {
   .resume-component-element_article {
     grid-template-columns: 1fr;
