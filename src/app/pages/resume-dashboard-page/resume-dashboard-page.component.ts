@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { IResume, IResumeDraft } from 'src/app/models/IResume.interface';
 import { createIResumeDraft } from 'src/app/models/Resume.implement';
 import { ResumeService } from 'src/app/services/resume.service';
@@ -14,7 +15,7 @@ export class ResumeDashboardPageComponent {
   isDeletePopupOpen: boolean = false;
   indexResumeToDelete!: number;
 
-  constructor(private resumeService: ResumeService) {}
+  constructor(private resumeService: ResumeService, private router: Router) {}
 
   ngOnInit() {
     this.getResumes();
@@ -30,8 +31,9 @@ export class ResumeDashboardPageComponent {
   }
 
   addResume() {
-    const newResume: IResumeDraft = createIResumeDraft('tomasNEW')
-    this.resumeService.addResume(newResume);
+    const newResume: IResumeDraft = createIResumeDraft("Untitled");
+    const resumeId = this.resumeService.addResume(newResume);
+    this.router.navigate(['/editor', resumeId])
   }
 
   deleteResume(index: number) {

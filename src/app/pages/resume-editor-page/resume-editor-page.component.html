@@ -25,7 +25,10 @@
       ></app-resume-personal-details>
 
       <!-- summary -->
-      <app-resume-summary></app-resume-summary>
+      <app-resume-summary
+      [summary]="resume.summary"
+      (summaryChange)="updateResumeSummary($event)"
+      ></app-resume-summary>
 
       <!-- employment -->
       <app-resume-section

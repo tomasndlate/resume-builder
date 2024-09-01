@@ -4,43 +4,53 @@
     <nav>
       <a routerLink="/dashboard" routerLinkActive="dashboard-header_active-link">Resumes</a>
     </nav>
-    <button (click)="addResume()">
+    <button (click)="addResume()" class="dashboard-header_bottom_button">
       <i class="bi bi-plus-lg"></i>
       <p>Create New</p>
     </button>
   </div>
 </header>
 
-<section class="dashboard-resumes">
-
-  <section class="dashboard-resumes_card" *ngFor="let resume of resumes; let i = index">
-    <header>
-      <h2>{{ resume.tag }}</h2>
-      <p>Monday Jan 20, 2020</p>
-    </header>
-    <article>
-      <button>
-        <i class="bi bi-filetype-pdf"></i>
-        <p>Download PDF</p>
-      </button>
-      <button>
-        <i class="bi bi-copy"></i>
-        <p>Make a copy</p>
-      </button>
-      <button (click)="deleteResume(i)" class="dashboard-resumes_card_delete">
-        <i class="bi bi-trash3"></i>
-        <p>Delete</p>
-      </button>
-    </article>
-    <footer>
-      <a [routerLink]="['/editor', resume.id]" class="dashboard-resumes_card_edit">
-        <i class="bi bi-pencil"></i>
-        <p>Edit Resume Details</p>
-      </a>
-    </footer>
+<ng-container *ngIf="resumes.length > 0; else noResumes">
+  <section class="dashboard-resumes">
+    <section class="dashboard-resumes_card" *ngFor="let resume of resumes; let i = index">
+      <header>
+        <h2>{{ resume.tag }}</h2>
+        <p>Monday Jan 20, 2020</p>
+      </header>
+      <article>
+        <button>
+          <i class="bi bi-filetype-pdf"></i>
+          <p>Download PDF</p>
+        </button>
+        <button>
+          <i class="bi bi-copy"></i>
+          <p>Make a copy</p>
+        </button>
+        <button (click)="deleteResume(i)" class="dashboard-resumes_card_delete">
+          <i class="bi bi-trash3"></i>
+          <p>Delete</p>
+        </button>
+      </article>
+      <footer>
+        <a [routerLink]="['/editor', resume.id]" class="dashboard-resumes_card_edit">
+          <i class="bi bi-pencil"></i>
+          <p>Edit Resume Details</p>
+        </a>
+      </footer>
+    </section>
   </section>
-
-</section>
+</ng-container>
+<ng-template #noResumes>
+  <section class="dashboard-no-resumes">
+    <h4>No resumes yet</h4>
+    <p>You don't have any resume created, give it a change!</p>
+    <button (click)="addResume()" class="dashboard-header_bottom_button">
+      <i class="bi bi-plus-lg"></i>
+      <p>Create New</p>
+    </button>
+  </section>
+</ng-template>
 
 <app-delete-popup
   *ngIf="isDeletePopupOpen"

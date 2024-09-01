@@ -56,8 +56,8 @@ export const createIPersonalDetails = (): IPersonalDetails  => {
 
 export const createISummary = (): ISummary => {
   const summary: ISummary = {
-    title: { value: "", default: "" },
-    element: { value: "", label: "" }
+    title: { value: "", default: "Summary" },
+    element: { value: "", label: "Professional summary" }
   }
   return summary;
 }

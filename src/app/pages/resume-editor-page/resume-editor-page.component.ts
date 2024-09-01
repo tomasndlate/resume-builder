@@ -12,8 +12,6 @@ export class ResumeEditorPageComponent {
 
   resume!: IResume;
 
-  test_input: string = 'Untitled';
-
   constructor(
     private route: ActivatedRoute,
     private resumeService: ResumeService
@@ -23,10 +21,6 @@ export class ResumeEditorPageComponent {
     this.getResumeByParam();
   }
 
-  testFunction(){
-    console.log('Test function evoqued')
-  }
-
   updateResumeTag(tag: string) {
     this.resume = {...this.resume, tag: tag};
     this.updateResume();
@@ -34,6 +28,11 @@ export class ResumeEditorPageComponent {
 
   updateResumePersonalDetails(personalDetailsString: string) {
     this.resume = {...this.resume, personalDetails: JSON.parse(personalDetailsString)};
+    this.updateResume();
+  }
+
+  updateResumeSummary(summaryString: string) {
+    this.resume = {...this.resume, summary: JSON.parse(summaryString)};
     this.updateResume();
   }
 

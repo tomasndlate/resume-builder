@@ -16,13 +16,14 @@ export class ResumeService {
     this.updateResumeSubject();
   }
 
-  addResume(resume: IResumeDraft): void {
+  addResume(resume: IResumeDraft): number {
     const resumeId = this.generateId();
     this.currentResumes[resumeId] = {
       ...resume,
       id: resumeId
     };
     this.updateResumeSubject();
+    return resumeId;
   }
 
   removeResume(id: number): void {
