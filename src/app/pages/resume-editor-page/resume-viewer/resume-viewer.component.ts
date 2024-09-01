@@ -5,8 +5,8 @@ import * as pdfMake from "pdfmake/build/pdfmake";
 import * as pdfFonts from "pdfmake/build/vfs_fonts";
 (pdfMake as any).vfs = pdfFonts.pdfMake.vfs;
 
-import * as pdfjsLib from 'pdfjs-dist/legacy/build/pdf.mjs';
-pdfjsLib.GlobalWorkerOptions.workerSrc = `https://cdn.jsdelivr.net/npm/pdfjs-dist@${pdfjsLib.version}/build/pdf.worker.min.mjs`;
+import * as pdfjs from 'pdfjs-dist';
+pdfjs.GlobalWorkerOptions.workerSrc = require('pdfjs-dist/build/pdf.worker.js');;
 
 
 @Component({
@@ -17,8 +17,8 @@ pdfjsLib.GlobalWorkerOptions.workerSrc = `https://cdn.jsdelivr.net/npm/pdfjs-dis
 export class ResumeViewerComponent {
   @Input() resume!: IResume;
   @ViewChild('pdfCanvas', { static: false }) pdfCanvas!: ElementRef<HTMLCanvasElement>;
-  private pdf: pdfjsLib.PDFDocumentProxy | null = null;
-  private page: pdfjsLib.PDFPageProxy | null = null;
+  private pdf: pdfjs.PDFDocumentProxy | null = null;
+  private page: pdfjs.PDFPageProxy | null = null;
 
   private pdfDefinition = {
     content: [
@@ -49,7 +49,7 @@ export class ResumeViewerComponent {
     this.pdfDefinition.content.unshift({text: this.resume.tag, style: 'header'})
     pdfMake.createPdf(this.pdfDefinition).getBlob(async (blob) => {
       const url = URL.createObjectURL(blob);
-      this.pdf = await pdfjsLib.getDocument(url).promise;
+      this.pdf = await pdfjs.getDocument(url).promise;
       this.page = await this.pdf.getPage(1);
       this.updateCanvas();
     });
@@ -71,7 +71,7 @@ export class ResumeViewerComponent {
 
     context!.scale(devicePixelRatio, devicePixelRatio)
 
-    const renderContext: { canvasContext: CanvasRenderingContext2D; viewport: pdfjsLib.PageViewport; } = {
+    const renderContext: { canvasContext: CanvasRenderingContext2D; viewport: pdfjs.PageViewport; } = {
       canvasContext: context!,
       viewport: viewport
     };
