@@ -10,7 +10,7 @@
     Easily create and manage professional resumes!
     <br />
     <br />
-    <a href="https://tomasndlate.github.io/to-do-app"><strong>Explore ResumeBuilder Live »</strong></a>
+    <a href="https://tomasndlate.github.io/resume-builder"><strong>Explore ResumeBuilder Live »</strong></a>
     <br />
   </p>
 </div>
