@@ -35,11 +35,6 @@ export class ResumeViewerComponent {
     }
   };
 
-  // ngOnInit() {
-  //   if (this.resume)
-  //     this.generatePdf();
-  // }
-
   ngOnChanges(changes: SimpleChanges) {
     console.log('CHANGE HAPPEN')
     if (changes['resume'])
@@ -62,9 +57,13 @@ export class ResumeViewerComponent {
     const containerWidth = this.canvasContainer.nativeElement.clientWidth;
     const containerHeight = this.canvasContainer.nativeElement.clientHeight;
 
-    const viewport = this.page.getViewport({ scale: 1});
+    const viewport = this.page.getViewport({ scale: 1 });
 
-    const scale = Math.min(containerWidth / viewport.width, containerHeight / viewport.height);
+    // bigger scale during render, scale down to render the page at end
+    const scaleQuality = 3;
+
+    const scale = Math.min(containerWidth / viewport.width, containerHeight / viewport.height) * scaleQuality;
+    // const renderScale = scale * 2;
     const scaledViewport = this.page.getViewport({ scale })
 
     const canvas = this.pdfCanvas.nativeElement;
@@ -78,7 +77,9 @@ export class ResumeViewerComponent {
       viewport: scaledViewport
     };
 
-    this.page.render(renderContext);
+    this.page.render(renderContext).promise.then(() => {
+      context!.scale(1/scaleQuality, 1/scaleQuality)
+    });
   }
 
 }
