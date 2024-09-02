@@ -40,7 +40,7 @@
 
 The Resume Builder App is a web application that allows users to create professional resumes quickly and easily. Users can input their personal information, work experience, education, and skills, and generate a well-formatted resume that can be downloaded or shared.
 
-[![Product Name Screen Shot](images/readme-app-demo.png)]([https://example.com](https://tomasndlate.github.io/resume-builder))
+![Product Name Screen Shot](images/readme-app-demo.png)
 
 ## Features
 
@@ -62,9 +62,10 @@ This project was built using the following technologies:
 - **Node.js**
 - **Angular CLI**
 
-- Important npm packages
-     - pdfMake
-     - pdfjs-dist 
+Important npm packages:
+
+- **pdfMake**
+- **pdfjs-dist** 
 
 ## Getting Started
 
