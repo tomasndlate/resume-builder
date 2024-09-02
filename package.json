@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "build:prod": "ng build --configurations=production --base-ref=/resume-builder/",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
