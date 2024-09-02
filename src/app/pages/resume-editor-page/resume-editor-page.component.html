@@ -1,6 +1,6 @@
 <ng-container *ngIf="resume; else resumeNotFound">
 
-  <section class="editor">
+  <section *ngIf="showEditor" class="editor">
 
     <header class="editor_header">
       <a [routerLink]="['/dashboard']" class="editor_header_return-to-resumes">
@@ -77,9 +77,14 @@
 
   </section>
 
-  <section class="viewer">
-    <app-resume-viewer [resume]="resume"></app-resume-viewer>
+  <section *ngIf="showPdfViewer" [ngClass]="['viewer']">
+    <app-resume-viewer [resume]="resume" (closeViewer)="flipIsPdfViewerOpen()"></app-resume-viewer>
   </section>
+
+  <button *ngIf="!showPdfViewer" (click)="flipIsPdfViewerOpen()" class="button-open-responsive-pdf">
+    <i class="bi bi-file-earmark-person"></i>
+    <p [class.scrolled]="isScrolled">Resume Template</p>
+  </button>
 
 </ng-container>
 

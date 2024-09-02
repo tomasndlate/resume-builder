@@ -61,17 +61,43 @@
   background-color: blueviolet;
 }
 
-@media screen and (max-width: 1200px) {
-  :host {
-    grid-template-columns: 1fr;
-  }
+.button-open-responsive-pdf {
+  display: none;
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  border-radius: 100px;
+  align-items: center;
+  gap: 5px;
+  border: none;
+  box-shadow: 0px 2px 10px rgba(160, 160, 160, 0.2);
+  background-color: var(--color-highlight-primary);
+  color: var(--color-text-contrast);
+  height: fit-content;
+  width: fit-content;
+  padding: 12px 16px;
+  font-size: var(--font-size-md);
+  font-weight: 500;
+}
 
+.button-open-responsive-pdf i {
+  font-size: 24px;
+}
+
+.button-open-responsive-pdf > .scrolled {
+  display: none;
+}
+
+@media screen and (max-width: 1200px) {
   .editor {
-    padding: 20px;
-    display: none;
+    width: 100%;
   }
 
   .viewer {
     width: 100%;
+  }
+
+  .button-open-responsive-pdf{
+    display: flex;
   }
 }

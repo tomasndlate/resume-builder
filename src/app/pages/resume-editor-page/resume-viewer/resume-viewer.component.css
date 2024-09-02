@@ -33,6 +33,7 @@
   align-self: center;
   display: flex;
   justify-content: space-between;
+  flex-direction: row-reverse;
 }
 
 .resume-viewer_displayer_header_button {
@@ -49,9 +50,14 @@
   color: var(--color-text-contrast);
 }
 
+.editor-btn,
 .template-btn {
   padding: 0;
   background-color: rgba(0, 0, 0, 0);
+}
+
+.editor-btn {
+  display: none;
 }
 
 .download-btn {
@@ -93,11 +99,26 @@
   background-color: rgba(0, 0, 0, 0);
   width: fit-content;
   height: fit-content;
+  cursor: pointer;
 }
 
 .resume-viewer_displayer_footer button i {
   -webkit-text-stroke: 1px;
   color: var(--color-text-contrast);
+}
+
+.resume-viewer_displayer_footer button:disabled {
+  opacity: .2;
+  cursor: default;
+}
+
+@media screen and (max-width: 1200px) {
+  .resume-viewer_displayer_header {
+    flex-direction: row;
+  }
+  .editor-btn {
+    display: flex;
+  }
 }
 
 @media screen and (max-width: 600px){

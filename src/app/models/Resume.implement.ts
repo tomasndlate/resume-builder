@@ -74,9 +74,9 @@ export const createSection_Employments = (): IResumeSection => {
 export const createSectionElement_Employments = (): IResumeSectionElement => {
   const sectionElement: IResumeSectionElement = {
     elementTitleKeys: ["jobTitle", "employer"],
-    elementTitleConnector: "at",
-    elementSubTitleKeys: [],
-    elementSubTitleConnector: "",
+    elementTitleConnector: " at ",
+    elementSubTitleKeys: ["city", "country"],
+    elementSubTitleConnector: ", ",
     elementFields: {
       jobTitle: {type: 'text', value: "", label: "Job title" },
       employer: {type: 'text', value: "", label: "Employer" },
@@ -100,10 +100,10 @@ export const createSection_Education = (): IResumeSection => {
 }
 export const createSectionElement_Education = (): IResumeSectionElement => {
   const sectionElement: IResumeSectionElement = {
-    elementTitleKeys: ["school"],
-    elementTitleConnector: "",
-    elementSubTitleKeys: ["degree"],
-    elementSubTitleConnector: "",
+    elementTitleKeys: ["degree", "school"],
+    elementTitleConnector: " at ",
+    elementSubTitleKeys: ["city", "country"],
+    elementSubTitleConnector: ", ",
     elementFields: {
       school: {type: 'text', value: "", label: "School" },
       degree: {type: 'text', value: "", label: "Degree" },
@@ -173,8 +173,8 @@ export const createSection_Certifications = (): IResumeSection => {
 }
 export const createSectionElement_Certifications = (): IResumeSectionElement => {
   const sectionElement: IResumeSectionElement = {
-    elementTitleKeys: ["certification"],
-    elementTitleConnector: "",
+    elementTitleKeys: ["certification", "institution"],
+    elementTitleConnector: ", ",
     elementSubTitleKeys: [],
     elementSubTitleConnector: "",
     elementFields: {

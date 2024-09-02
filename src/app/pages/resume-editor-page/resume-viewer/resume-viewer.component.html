@@ -1,12 +1,16 @@
 <div class="resume-viewer">
-  <!-- <p>TEST MENU</p> -->
+  <!-- <p>Feature Side Menu</p> -->
   <section class="resume-viewer_displayer">
     <header class="resume-viewer_displayer_header">
-      <button class="resume-viewer_displayer_header_button template-btn">
+      <button (click)="emitCloseViewer()" class="resume-viewer_displayer_header_button editor-btn">
+        <i class="bi bi-chevron-left"></i>
+        <p>Editor</p>
+      </button>
+      <!-- <button class="resume-viewer_displayer_header_button template-btn">
         <i class="bi bi-grid-1x2"></i>
         <p>Templates</p>
-      </button>
-      <button class="resume-viewer_displayer_header_button download-btn">
+      </button> -->
+      <button (click)="downloadPDF()" class="resume-viewer_displayer_header_button download-btn">
         <i class="bi bi-filetype-pdf"></i>
         <p>Download</p>
       </button>
@@ -17,11 +21,11 @@
     </article>
 
     <footer class="resume-viewer_displayer_footer">
-      <button>
+      <button (click)="previousPage()" [disabled]="isInMinPage">
         <i class="bi bi-chevron-left"></i>
       </button>
-      <p>1/1</p>
-      <button>
+      <p> {{ currentPage }}/{{ maxPage }} </p>
+      <button (click)="nextPage()" [disabled]="isInMaxPage">
         <i class="bi bi-chevron-right"></i>
       </button>
     </footer>

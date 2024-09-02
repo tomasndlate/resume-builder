@@ -35,7 +35,7 @@ export class ResumeSectionElementComponent {
     const title = this.sectionElement.elementTitleKeys
                   .map(key => this.sectionElement.elementFields[key].value)
                   .filter(fieldValue => !!fieldValue)
-                  .join(` ${this.sectionElement.elementTitleConnector} `);
+                  .join(this.sectionElement.elementTitleConnector);
     return title ? title : "(Not specified)";
   }
 
@@ -43,7 +43,7 @@ export class ResumeSectionElementComponent {
     const subtitle = this.sectionElement.elementSubTitleKeys
                   .map(key => this.sectionElement.elementFields[key].value)
                   .filter(fieldValue => !!fieldValue)
-                  .join(` ${this.sectionElement.elementSubTitleConnector} `)
+                  .join(this.sectionElement.elementSubTitleConnector)
     return subtitle ? subtitle : "";
   }
 }

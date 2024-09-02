@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { IEmploymentsElement, IResume, IResumeSection } from '../../models/IResume.interface';
 import { ResumeService } from '../../services/resume.service';
@@ -11,14 +11,50 @@ import { ResumeService } from '../../services/resume.service';
 export class ResumeEditorPageComponent {
 
   resume!: IResume;
+  isPdfViewerOpenCss = 'viewer-close';
+  isPdfViewerOpen = false;
+  isSmallScreen = false;
+  isScrolled = false;
 
   constructor(
     private route: ActivatedRoute,
     private resumeService: ResumeService
   ) {}
 
+  get showPdfViewer() {
+    return (this.isPdfViewerOpen && this.isSmallScreen) || !this.isSmallScreen;
+  }
+
+  get showEditor() {
+    return !this.showPdfViewer || !this.isSmallScreen;
+  }
+
   ngOnInit() {
+    this.setIsSmallScreen();
     this.getResumeByParam();
+  }
+
+  @HostListener('window:resize', ['$event.target.innerWidth'])
+  onResize(width: number) {
+    // console.log(width);
+    this.setIsSmallScreen();
+    if (window.screen.width > 1200) {
+      this.isPdfViewerOpen = false;
+    }
+  }
+
+  setIsSmallScreen() {
+    this.isSmallScreen = window.screen.width <= 1200;
+  }
+
+  @HostListener('window:scroll', [])
+  onWindowScroll() {
+    const offset = window.screenY || document.documentElement.scrollTop || document.body.scrollTop || 0;
+    this.isScrolled = offset > 100;
+  }
+
+  flipIsPdfViewerOpen() {
+    this.isPdfViewerOpen = !this.isPdfViewerOpen;
   }
 
   updateResumeTag(tag: string) {
