@@ -17,6 +17,7 @@ pdfjs.GlobalWorkerOptions.workerSrc = require('pdfjs-dist/build/pdf.worker.js');
 export class ResumeViewerComponent {
   @Input() resume!: IResume;
   @ViewChild('pdfCanvas', { static: false }) pdfCanvas!: ElementRef<HTMLCanvasElement>;
+  @ViewChild('canvasContainer', { static: false }) canvasContainer!: ElementRef<HTMLElement>;
   private pdf: pdfjs.PDFDocumentProxy | null = null;
   private page: pdfjs.PDFPageProxy | null = null;
 
@@ -58,24 +59,26 @@ export class ResumeViewerComponent {
   updateCanvas() {
     if (!this.page) return;
 
+    const containerWidth = this.canvasContainer.nativeElement.clientWidth;
+    const containerHeight = this.canvasContainer.nativeElement.clientHeight;
+
     const viewport = this.page.getViewport({ scale: 1});
-    const c = this.pdfCanvas.nativeElement;
-    const context = c.getContext('2d');
 
-    // High-DPI settings
-    const devicePixelRatio = window.devicePixelRatio || 1;
-    c.style.width = `100%`;
-    c.style.height = `100%`;
-    c.height = viewport.height * devicePixelRatio;
-    c.width = viewport.width * devicePixelRatio;
+    const scale = Math.min(containerWidth / viewport.width, containerHeight / viewport.height);
+    const scaledViewport = this.page.getViewport({ scale })
 
-    context!.scale(devicePixelRatio, devicePixelRatio)
+    const canvas = this.pdfCanvas.nativeElement;
+    const context = canvas.getContext('2d');
+
+    canvas.height = scaledViewport.height;
+    canvas.width = scaledViewport.width;
 
     const renderContext: { canvasContext: CanvasRenderingContext2D; viewport: pdfjs.PageViewport; } = {
       canvasContext: context!,
-      viewport: viewport
+      viewport: scaledViewport
     };
 
     this.page.render(renderContext);
   }
+
 }

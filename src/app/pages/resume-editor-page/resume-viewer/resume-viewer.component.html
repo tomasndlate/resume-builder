@@ -1,8 +1,24 @@
-<p>resume-viewer works!</p>
-<div class="canvas-container">
+<div class="resume-viewer">
+  <!-- <p>TEST MENU</p> -->
+  <section class="resume-viewer_displayer">
+    <header class="resume-viewer_displayer_header">
+      <button class="resume-viewer_displayer_header_button">
+        <i class="bi bi-grid-1x2"></i>
+        <p>Templates</p>
+      </button>
+      <button class="resume-viewer_displayer_header_button">
+        <i class="bi bi-filetype-pdf"></i>
+        <p>Download</p>
+      </button>
+    </header>
 
-  <canvas id="pdfCanvas" #pdfCanvas></canvas>
+    <article class="resume-viewer_displayer_article" #canvasContainer>
+      <canvas id="pdfCanvas" #pdfCanvas></canvas>
+    </article>
 
-  <div *ngIf="resume">
-  {{resume.tag}}</div>
+    <footer class="resume-viewer_displayer_footer">
+      <p>foot</p>
+    </footer>
+  </section>
+
 </div>

@@ -68,6 +68,7 @@
 
   .editor {
     padding: 20px;
+    display: none;
   }
 
   .viewer {
